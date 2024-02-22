@@ -9,7 +9,9 @@
 
 .titulo{
     color: white;
-    background-color: rgba(0, 0, 0, 0.418);
+    background-color: rgba(0, 0, 0, 0.685);
+    font-family: sans-serif;
+    border-radius: 10px;
 }
 a {
     color: rgb(255, 255, 255);
@@ -60,7 +62,7 @@ button::before {
     top: 0%;
     left: 0%;
     transform: scaleX(0.2) scaleY(0.5) translate(250%, 100%);
-    border-top: solid 2px #333;
+    border-top: solid 1px #333;
     border-left: solid 4px #333;
     transition: all .4s ease-in-out;
 }

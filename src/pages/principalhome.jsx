@@ -21,11 +21,19 @@ export const Principalhome = () => {
                 </div>
 
                 <div className="cuadro3">
-                    <h1>tecnicos     : 0</h1>
+                    <h1>notificaciones     : 0</h1>
                 </div>
 
                 <div className="cuadro4">
                     <h1>mantenimientos  : 0</h1>
+                </div>
+
+                <div className="cuadro5">
+                    <h1>hambiente  : 0</h1>
+                </div>
+
+                <div className="cuadro6">
+                    <h1>area  : 0</h1>
                 </div>
             </div>
 

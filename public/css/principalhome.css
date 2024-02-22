@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap-reverse;
     gap: 20px;
-    margin-top: 200px;
+    margin-top: 50px;
     cursor: pointer;
     justify-content: center;
   }
@@ -32,7 +32,7 @@
     box-shadow: 15px 15px 15px white;
   }
   .cuadro3{
-    background-image: url(https://images.unsplash.com/photo-1563770660941-20978e870e26?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-image: url(https://plus.unsplash.com/premium_photo-1682309526815-efe5d6225117?q=80&w=2112&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
     width: 350px;
     height: 350px;
     background-size: cover; /* Ajusta el tamaño del fondo para cubrir completamente el cuadro */
@@ -55,11 +55,37 @@
     border-radius: 15px;
     box-shadow: 15px 15px 15px white;;
   }
+  .cuadro5 {
+    background-image: url(https://plus.unsplash.com/premium_photo-1683121680448-ef3047b9351a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    width: 350px;
+    height: 350px;
+    background-size: cover; /* Ajusta el tamaño del fondo para cubrir completamente el cuadro */
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: background-size 0.5s ease; /* Agrega una transición al efecto de escala */
+    transition: all 400ms ease;
+    border-radius: 15px;
+    box-shadow: 15px 15px 15px white;;
+  }
+  .cuadro6 {
+    background-image: url(https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    width: 350px;
+    height: 350px;
+    background-size: cover; /* Ajusta el tamaño del fondo para cubrir completamente el cuadro */
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: background-size 0.5s ease; /* Agrega una transición al efecto de escala */
+    transition: all 400ms ease;
+    border-radius: 15px;
+    box-shadow: 15px 15px 15px white;;
+  }
   
   .cuadro1:hover,
   .cuadro2:hover,
   .cuadro3:hover,
-  .cuadro4:hover {
+  .cuadro4:hover,
+  .cuadro5:hover,
+  .cuadro6:hover{
     transform: translateX(10px);
   }
   

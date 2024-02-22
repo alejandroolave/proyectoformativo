@@ -19,7 +19,7 @@ export const Home = () => {
                 <div className="barra">
                     <img className="f2" src="/public/img/logos/logooriginal.jpeg" alt="" />
                     <Link to={"login"}>
-                        <button className="titulo">inicio sesión</button>
+                        <button className="titulo">Inicio sesión</button>
                     </Link>
 
                 </div>

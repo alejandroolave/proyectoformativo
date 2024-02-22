@@ -13,7 +13,6 @@ export const Mantenimientos = () => {
 
             <title>Mantenimientos</title>
             <div>
-                <input type="text" name="text" placeholder="Search..." />
                 <button onClick={() => { setModal(true) }}> Añadir</button>
             </div>
             <div>

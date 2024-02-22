@@ -8,7 +8,7 @@ export const Usuarios = () => {
 
     return (
         <>
-            <link rel="stylesheet" href="/public/css/maquinas.css" />
+            <link rel="stylesheet" href="/public/css/usuarios.css" />
             <h1 className="titulo1">Usuarios</h1>
 
             <title>Usuarios</title>

@@ -1,0 +1,168 @@
+.tite{
+  color: royalblue;
+  margin-left: 6px;
+}
+
+.restore{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+a{
+  text-decoration: none;
+  margin-top: 50px;
+}
+
+  body {
+    background-image: url(https://img.freepik.com/foto-gratis/fondo-textura-hormigon-vineta-azul-pastel_53876-102637.jpg?w=1380&t=st=1701394718~exp=1701395318~hmac=a1682cbe79c5031c27ed4900a581f5198e0883a9877573adb0a4e750ce5a7440);
+    height: 100vh; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.form {
+  border-radius: 2.5% 0% 0% 2.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 150px;
+    background-color: white;
+    width: 300px; 
+    max-width: 300px;
+    height: 300px; 
+    margin: 0 auto;
+  }
+  .form2{
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 150px;
+    background-color: white;
+    width: 300px; 
+    max-width: 300px;
+    height: 300px; 
+    margin: 0 auto;
+  }
+  #heading {
+    text-align: center;
+    margin: 2em;
+    color: rgb(0, 0, 0);
+    font-size: 1.2em;
+  }
+  
+  .field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7em;
+    padding: 0.6em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.363);
+  }
+  
+  .input-icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: royalblue;
+  }
+  
+  .input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: rgb(0, 0, 0);
+  }
+  
+  .form .btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+  }
+
+  .btn button{
+    cursor: pointer;
+    color: aliceblue;
+    padding: 10px;
+  }
+  
+  .btn button:hover{
+    background-color: rgb(73, 162, 245);
+  }
+
+  .button1 {
+    padding: 0.5em;
+    margin-top: -15px;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    border-radius: 5px;
+    margin-right: 0.5em;
+    border: none;
+    outline: none;
+    transition: .5s ease-in-out;
+    background-color:royalblue;
+  }
+
+
+  .leter{
+    margin-top: -70px;
+    font-size: 2.0em;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+.name1, .name2  {
+    text-align: center;
+    font-size: 16px;
+    color: royalblue;
+}
+
+a{
+  color: #ffffff;
+  font-family: sans-serif;
+}
+p{
+  color: black;
+}
+
+
+.fondi{
+  width: 400px;
+  height: 450px;
+  border-radius: 0% 2.5% 2.5% 0%;  
+}
+
+@media only screen and (max-width: 600px) {
+  .form, .form2 {
+      padding: 1em;
+  }
+
+  .button1 {
+      margin-top: 10px;
+  }
+}
+
+.principal{
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.452);
+}
+
+
+
+
+
+
+
+
+

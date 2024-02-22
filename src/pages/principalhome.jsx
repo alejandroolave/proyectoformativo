@@ -8,9 +8,6 @@ export const Principalhome = () => {
         <>
 
             <link rel="stylesheet" href="/public/css/principalhome.css" />
-
-
-
             <div className="principal">
                 <div className="cuadro1">
                     <h1>usuarios    : 0</h1>

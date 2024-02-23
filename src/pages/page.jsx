@@ -34,27 +34,27 @@ export const Page = () => {
                             <Link to={"Usuarios"}>
                                 Usuarios
                             </Link>
-                            <hr />
+                            {/* <hr /> */}
                             <Link to={"Mantenimientos"}>
                                 mantenimientos
                             </Link>
-                            <hr />
+                            {/* <hr /> */}
                             <Link to={"Maquinas"}>
                                 maquinas
                             </Link>
-                            <hr />
+                            {/* <hr /> */}
                             <Link to={"Ambiente"}>
                                 ambiente
                             </Link>
-                            <hr />
+                            {/* <hr /> */}
                             <Link to={"Area"}>
                                 area
                             </Link>
-                            <hr />
+                            {/* <hr /> */}
                             <Link to={"Notificaciones"}>
                                 Notificaciones
                             </Link>
-                            <hr />
+                            {/* <hr /> */}
                             <Link to={"/"}>
                                 cerrar seccion
                             </Link>

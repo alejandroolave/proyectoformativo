@@ -7,10 +7,14 @@ import { Maquinas } from "./pages/Maquinas"
 import { Principalhome } from "./pages/principalhome"
 import { Usuarios } from "./pages/usuarios"
 import { Mantenimientos } from "./pages/mantenimientos"
+import { Hambiente } from "./pages/hambiente"
+import { Area } from "./pages/area"
+import { Notificaciones } from "./pages/notificaciones"
 import { useEffect } from "react"
 import { Loader } from "./pages/loader"
 import 'Bootstrap/dist/css/bootstrap.min.css';
 import DataTable from "react-data-table-component"
+
 
 
 
@@ -34,6 +38,9 @@ function App() {
             <Route path="maquinas" element={<Maquinas />} />
             <Route path="Usuarios" element={<Usuarios />} />
             <Route path="Mantenimientos" element={<Mantenimientos />} />
+            <Route path="Hambiente" element={<Hambiente/>}/>
+            <Route path="Area" element={<Area/>}/>
+            <Route path="Notificaciones" element={<Notificaciones/>}/>
 
           </Route>
         </Route>

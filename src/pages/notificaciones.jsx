@@ -4,16 +4,14 @@ import { useEffect } from "react";
 import MUIDataTable from "mui-datatables";
 
 
-export const Usuarios = () => {
+export const Notificaciones = () => {
     const [modal, setModal] = useState(false)
 
     return (
         <>
-            <link rel="stylesheet" href="/public/css/usuarios.css" /><br />
+            <link rel="stylesheet" href="/public/css/maquinas.css" /><br />
             <div>
-
-                <MUIDataTable/>
-
+                <MUIDataTable />
             </div>
         </>
     )

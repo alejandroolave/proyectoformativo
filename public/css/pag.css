@@ -52,16 +52,23 @@ body {
   left: 1px;
   text-align: center;
   background-color: #ffffff;
-  padding: 10px;
+  padding: 5px;
   z-index: 1;
-  border-radius: 15%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px rgb(255, 255, 255);
+}
+
+.user-options a:hover {
+  background-color: rgb(184, 184, 123);
+  /* Cambia el color de fondo al pasar el mouse */
+  color: black;
 }
 
 .user-options a {
   display: block;
   color: rgb(0, 0, 0);
   text-decoration: none;
-  padding: 5px;
+  padding: 15px;
   font-family: sans-serif;
 }
 
@@ -139,5 +146,3 @@ input[type="submit"] {
     width: 30%;
   }
 }
-
-

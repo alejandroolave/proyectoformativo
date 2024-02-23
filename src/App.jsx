@@ -7,7 +7,7 @@ import { Maquinas } from "./pages/Maquinas"
 import { Principalhome } from "./pages/principalhome"
 import { Usuarios } from "./pages/usuarios"
 import { Mantenimientos } from "./pages/mantenimientos"
-import { Hambiente } from "./pages/hambiente"
+import { Ambiente } from "./pages/Ambiente"
 import { Area } from "./pages/area"
 import { Notificaciones } from "./pages/notificaciones"
 import { Recuperar } from "./pages/recuperar"
@@ -40,7 +40,7 @@ function App() {
             <Route path="maquinas" element={<Maquinas />} />
             <Route path="Usuarios" element={<Usuarios />} />
             <Route path="Mantenimientos" element={<Mantenimientos />} />
-            <Route path="Hambiente" element={<Hambiente/>}/>
+            <Route path="Ambiente" element={<Ambiente/>}/>
             <Route path="Area" element={<Area/>}/>
             <Route path="Notificaciones" element={<Notificaciones/>}/>
 

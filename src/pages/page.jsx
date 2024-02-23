@@ -43,8 +43,8 @@ export const Page = () => {
                                 maquinas
                             </Link>
                             <hr />
-                            <Link to={"Hambiente"}>
-                                hambiente
+                            <Link to={"Ambiente"}>
+                                ambiente
                             </Link>
                             <hr />
                             <Link to={"Area"}>

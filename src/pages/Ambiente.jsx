@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import MUIDataTable from "mui-datatables";
 
 
-export const Hambiente = () => {
+export const Ambiente = () => {
     const [modal, setModal] = useState(false)
 
     return (

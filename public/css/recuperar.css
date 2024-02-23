@@ -110,7 +110,7 @@ body {
   }
   
   .form label .input:valid + span {
-    color: green;
+    color: rgb(0, 0, 0);
   }
   
   .submit {

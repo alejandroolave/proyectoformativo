@@ -32,9 +32,13 @@ export const Recuperar = () => {
                             <span>CONFIRMAR CONTRASEÑA</span>
                         </label>
                         <button className="submit">CAMBIAR</button>
-                        <p className="signin">
-                            ¿Ya tienes una cuenta? Iniciar sesión <a href="index.html">Signin</a>{" "}
-                        </p>
+                        <div className="signin">
+                                <Link to={'/login'}>
+                                    <button className="button">
+                                        ya tienes una cuenta?
+                                    </button>
+                                </Link>
+                            </div>
                     </form>
                 </>
 

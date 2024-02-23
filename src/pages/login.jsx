@@ -52,12 +52,13 @@ export const Login = () => {
                                     </button>
                                 </Link>
                             </div>
-                            <p className="restore">
-                                ¿Quieres restablecer tu contraseña?
-                                <a className="tite" href="recuperar.html">
-                                    Restablecer
-                                </a>{" "}
-                            </p>
+                            <div className="restore">
+                                <Link to={'/Recuperar'}>
+                                    <button className="button">
+                                        Restaurar tu contraseña
+                                    </button>
+                                </Link>
+                            </div>
                         </form>
                     </div>
                 </div>

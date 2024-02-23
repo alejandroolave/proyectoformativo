@@ -10,6 +10,7 @@ import { Mantenimientos } from "./pages/mantenimientos"
 import { Hambiente } from "./pages/hambiente"
 import { Area } from "./pages/area"
 import { Notificaciones } from "./pages/notificaciones"
+import { Recuperar } from "./pages/recuperar"
 import { useEffect } from "react"
 import { Loader } from "./pages/loader"
 import 'Bootstrap/dist/css/bootstrap.min.css';
@@ -30,6 +31,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='*' element={<Xd />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/Recuperar" element={<Recuperar />} />
 
 
 

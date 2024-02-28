@@ -31,11 +31,38 @@ a {
 }
 
 @media (max-width: 768px) {
-    .btn {
-        left: 50%;
-        /* Centra el botón en pantallas más pequeñas */
+    .barra {
+        margin: 20px; /* Adjust margin for mobile devices */
+    }
+
+    .titulo {
+        margin: 10px; /* Add margin to the button for spacing on mobile devices */
+        position: relative; /* Add position relative to .titulo */
+        left: 50%; /* Move the button to the center horizontally */
+        transform: translateX(-50%); /* Center the button horizontally */
+    }
+
+    button {
+        margin-top: 10px; /* Add margin to the button for spacing on mobile devices */
+    }
+
+    button::before {
+        transform: scaleX(0.2) scaleY(0.5) translate(50%, 100%); /* Adjust transform for mobile devices */
+    }
+
+    button::after {
+        transform: translate(-50%, -50%) scaleX(0.2) scaleY(0.5); /* Adjust transform for mobile devices */
+    }
+
+    button:hover::before {
+        transform: translate(0%, 0%) scaleX(1) scaleY(1);
+    }
+
+    button:hover::after {
+        transform: scaleX(1) scaleY(1) translate(0%, 0%);
     }
 }
+
 
 button {
     z-index: 2;

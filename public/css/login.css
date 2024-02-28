@@ -142,14 +142,34 @@ p{
 }
 
 @media only screen and (max-width: 600px) {
-  .form, .form2 {
+  .card {
+      width: 90%;
+      max-width: 400px;
+      margin: auto;
+  }
+
+  .form {
       padding: 1em;
+  }
+
+  .input-field {
+      width: 100%;
   }
 
   .button1 {
       margin-top: 10px;
   }
+
+  .restore {
+      text-align: center;
+  }
+
+  .fondi {
+      display: none; /* Hide the image on smaller screens */
+  }
 }
+
+
 
 .principal{
   border-radius: 12px;

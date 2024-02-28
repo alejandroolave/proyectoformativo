@@ -284,11 +284,7 @@ body {
 
 
 
-
-  .boton2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-  }
+.button1{
+  margin-left: 850px;
+  margin-top: 50px;
+}

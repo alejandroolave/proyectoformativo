@@ -60,9 +60,9 @@ export const Usuarios = () => {
 
                     options={options}
                 />
-                <button className="botonn">
-                    hola
-                </button>
+                <Link to="/ruta-de-destino" className="nuevo-boton">
+                    Nuevo Botón
+                </Link>
 
             </div>
         </>

@@ -182,8 +182,22 @@ body {
   }
 
 
-
-
+  .nuevo-boton {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .nuevo-boton:hover {
+    background-color: darkblue;
+  }
 
 
 

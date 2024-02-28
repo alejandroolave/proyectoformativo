@@ -99,6 +99,16 @@ a{
     background-color: rgb(73, 162, 245);
   }
 
+
+
+
+  .button{
+    border: none;
+    color: red;
+    font-family: sans-serif;
+    transform: translate(20px);
+    font-size: 1.1em;
+  }
   .button1 {
     padding: 0.5em;
     margin-top: -15px;

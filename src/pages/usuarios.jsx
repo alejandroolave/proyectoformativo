@@ -60,7 +60,7 @@ export const Usuarios = () => {
 
                     options={options}
                 />
-                <button className="button1">
+                <button className="botonn">
                     hola
                 </button>
 

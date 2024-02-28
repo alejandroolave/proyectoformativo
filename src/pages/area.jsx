@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import MUIDataTable from "mui-datatables";
+import axios from "axios";
+import api from "../components/api";
 
 
 export const Area = () => {
     const [modal, setModal] = useState(false)
-    const [usuarios, setArea] = useState([]);
+    const [Area, setArea] = useState([]);
 
 
     useEffect(() => {
@@ -26,7 +28,7 @@ export const Area = () => {
 
 
     const listarArea = () => {
-        axios.get('http://localhost:4000/listar/Area')
+        api.get('Area/Listar')
             .then(res => {
                 setArea(res.data)
             })

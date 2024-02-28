@@ -9,7 +9,6 @@ import { Usuarios } from "./pages/usuarios"
 import { Mantenimientos } from "./pages/mantenimientos"
 import { Ambiente } from "./pages/Ambiente"
 import { Area } from "./pages/area"
-import { Notificaciones } from "./pages/notificaciones"
 import { Recuperar } from "./pages/recuperar"
 import { useEffect } from "react"
 import { Loader } from "./pages/loader"
@@ -42,7 +41,6 @@ function App() {
             <Route path="Mantenimientos" element={<Mantenimientos />} />
             <Route path="Ambiente" element={<Ambiente/>}/>
             <Route path="Area" element={<Area/>}/>
-            <Route path="Notificaciones" element={<Notificaciones/>}/>
 
           </Route>
         </Route>

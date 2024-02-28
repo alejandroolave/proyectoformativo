@@ -51,10 +51,6 @@ export const Page = () => {
                                 area
                             </Link>
                             {/* <hr /> */}
-                            <Link to={"Notificaciones"}>
-                                Notificaciones
-                            </Link>
-                            {/* <hr /> */}
                             <Link to={"/"}>
                                 cerrar seccion
                             </Link>

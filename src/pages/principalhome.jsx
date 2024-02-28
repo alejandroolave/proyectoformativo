@@ -17,10 +17,6 @@ export const Principalhome = () => {
                     <h1>maquinas     : 0</h1>
                 </div>
 
-                <div className="cuadro3">
-                    <h1>notificaciones     : 0</h1>
-                </div>
-
                 <div className="cuadro4">
                     <h1>mantenimientos  : 0</h1>
                 </div>

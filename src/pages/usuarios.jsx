@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import MUIDataTable from "mui-datatables";
 import axios from 'axios'
+import api from "../components/api";
 
 export const Usuarios = () => {
     const [modal, setModal] = useState(false);
@@ -32,7 +33,7 @@ export const Usuarios = () => {
     };
 
     const listarUsuarios = () => {
-        axios.get('http://localhost:4000/usuario/listar')
+        api.get('usuario/listar')
             .then(res => {
                 setUsuarios(res.data)
             })
@@ -53,13 +54,15 @@ export const Usuarios = () => {
 
                     title={"Reporte en React"}
 
-                data={usuarios}
+                    data={usuarios}
 
-                columns={columns}
+                    columns={columns}
 
-                options={options}
-     
-/>
+                    options={options}
+                />
+                <button className="boton2">
+                    hola
+                </button>
 
             </div>
         </>

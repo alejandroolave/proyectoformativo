@@ -18,14 +18,14 @@ export const Loader = () => {
             setTemplate(template)
             setTimeout(() => {
                 loader.remove()
-            }, 2500);
+            }, 1000);
 
         } else {
             document.body.appendChild(template)
             setTimeout(() => {
                 const loader = document.getElementById("loader")
                 loader.remove()
-            }, 2500);
+            }, 1000);
         }
         
     }, [location])

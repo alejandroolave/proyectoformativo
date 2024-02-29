@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Link } from "react-router-dom";
 import api from "../components/api";
+import { Navigate } from "react-router-dom";
 
 export const Login = () => {
     const [login,setLogin] =useState({})
@@ -15,7 +16,7 @@ export const Login = () => {
             console.log("login: " ,res)
             setLogin(res)
         } catch (error) {
-            
+            console.log("error login: " ,error)
             
         }
     }

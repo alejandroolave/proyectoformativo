@@ -25,7 +25,7 @@ export const Loader = () => {
             setTimeout(() => {
                 const loader = document.getElementById("loader")
                 loader.remove()
-            }, 1000);
+            }, 1500);
         }
         
     }, [location])

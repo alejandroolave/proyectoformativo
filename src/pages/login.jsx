@@ -1,14 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Form, Link } from "react-router-dom";
+import api from "../components/api";
 
 export const Login = () => {
+    const [login,setLogin] =useState({})
+
+    const validar = async (e) => {
+        e.preventDefault()
+        const formulario = new FormData(e.target)
+        const data = Object.fromEntries(formulario)
+  
+        try {
+            const res =  await api.post("validar",data)
+            console.log("login: " ,res)
+            setLogin(res)
+        } catch (error) {
+            
+            
+        }
+    }
+
     return (
         <>
             <link rel="stylesheet" href="/public/css/login.css" />
             <div className="principal">
                 <div className="card">
                     <div className="card2">
-                        <form className="form">
+                        <form className="form" onSubmit={validar}>
                             <h4 className="leter">BIENVENIDOS</h4>
                             <div className="field">
                                 <svg
@@ -26,6 +44,7 @@ export const Login = () => {
                                     className="input-field"
                                     placeholder="Usuario"
                                     autoComplete="off"
+                                    name="identificacion"
                                 />
                             </div>
                             <div className="field">
@@ -43,14 +62,14 @@ export const Login = () => {
                                     type="password"
                                     className="input-field"
                                     placeholder="Contraseña"
+                                    name="contraseña"
                                 />
                             </div>
                             <div className="btn">
-                                <Link to={'/dashboard'}>
-                                    <button className="button1">
+                                
+                                    <button className="button1" type="submit">
                                         INICIAR
                                     </button>
-                                </Link>
                             </div>
                             <div className="restore">
                                 <Link to={'/Recuperar'}>

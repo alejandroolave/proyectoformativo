@@ -46,6 +46,9 @@ export const Mantenimientos = () => {
                     columns={columns}
                     options={options}
                 />
+                <Link to="/ruta-de-destino" className="nuevo-boton">
+                    Registrar
+                </Link>
             </div>
         </>
     );

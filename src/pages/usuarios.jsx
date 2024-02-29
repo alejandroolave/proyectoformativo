@@ -61,7 +61,7 @@ export const Usuarios = () => {
                     options={options}
                 />
                 <Link to="/ruta-de-destino" className="nuevo-boton">
-                    Nuevo Botón
+                    Registrar
                 </Link>
 
             </div>

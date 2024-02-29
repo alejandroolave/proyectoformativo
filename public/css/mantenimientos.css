@@ -199,6 +199,24 @@ body {
 
 
 
+  .nuevo-boton {
+    font-size: 1.5em;
+    font-family: sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding: 5px 15px; /* Reduced padding to make the button smaller */
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .nuevo-boton:hover {
+    background-color: rgb(84, 112, 52);
+  }
 
 
 

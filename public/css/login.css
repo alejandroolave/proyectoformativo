@@ -194,6 +194,10 @@ p{
 
 
 
-
+.contraseña{
+  color: black;
+  border: none;
+  transform: translate(25px);
+}
 
 

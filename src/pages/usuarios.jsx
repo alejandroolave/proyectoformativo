@@ -14,7 +14,7 @@ export const Usuarios = () => {
 
 
     const toggle = () => setModal(!modal);
-    
+
 
 
     const handleNames = (e) => setNombres(e.target.value)
@@ -54,63 +54,101 @@ export const Usuarios = () => {
     const guardarUsuario = () => {
         api.post('usuario/registrar', {
             nombres: nombres,
-
+            apellidos: apellidos
         }).then(res => {
-            if(res.data.status == 200) {
+            if (res.data.status == 200) {
                 // REGISTRO EXITOSO
+                console.log('Registro exitoso');
             } else {
                 // NO SE PUDO REGISTRAR
+                console.log('No se pudo registrar');
             }
         }).catch(err => {
             console.error(err.response);
         });
     }
 
+
     return (
         <>
             <link rel="stylesheet" href="/public/css/usuarios.css" /><br />
             <div>
-
-                <h1>Tabla
-                    para el reporte</h1>
-
                 <MUIDataTable
 
-                    title={"Reporte en React"}
+                    title={""}
 
                     data={usuarios}
 
                     columns={columns}
 
                     options={options}
-                />
-                <Button onClick={toggle} className="nuevo-boton">
-                    Registrar
-                </Button>
 
+                />
             </div>
 
+            <Button onClick={toggle} className="nuevo-boton">
+                Registrar
+            </Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Registrar</ModalHeader>
                 <ModalBody>
-                <Row>
-                    <Col>
-                        <Label>Nombres</Label>
-                        <Input onChange={handleNames}/>
-                    </Col>
-                    <Col>
-                        <Label>Apellidos</Label>
-                        <Input/>
-                    </Col>
-                </Row>
-                </ModalBody>
+    <Row>
+        <Col md={6}>
+            <Label>Identificación</Label>
+            <Input onChange={handleNames} />
+        </Col>
+        <Col md={6}>
+            <Label>Nombres</Label>
+            <Input />
+        </Col>
+    </Row>
+    <Row>
+        <Col md={6}>
+            <Label>Apellidos</Label>
+            <Input />
+        </Col>
+        <Col md={6}>
+            <Label>Teléfono</Label>
+            <Input />
+        </Col>
+    </Row>
+    <Row>
+        <Col md={6}>
+            <Label>Correo</Label>
+            <Input />
+        </Col>
+        <Col md={6}>
+            <Label>Estado</Label>
+            <Input type="select">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+            </Input>
+        </Col>
+    </Row>
+    <Row>
+        <Col md={6}>
+            <Label>Contraseña</Label>
+            <Input type="password" />
+        </Col>
+        <Col md={6}>
+            <Label>Rol</Label>
+            <Input type="select">
+                <option value="administrador">Administrador</option>
+                <option value="usuario">Usuario</option>
+                <option value="tecnico">Técnico</option>
+            </Input>
+        </Col>
+    </Row>
+</ModalBody>
+
+
                 <ModalFooter>
-                <Button color="primary" onClick={guardarUsuario}>
-                    Registrar
-                </Button>{' '}
-                <Button color="secondary" onClick={toggle}>
-                    Cancelar
-                </Button>
+                    <Button color="primary" onClick={guardarUsuario}>
+                        Registrar
+                    </Button>{' '}
+                    <Button color="secondary" onClick={toggle}>
+                        Cancelar
+                    </Button>
                 </ModalFooter>
             </Modal>
         </>

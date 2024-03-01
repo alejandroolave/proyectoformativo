@@ -19,16 +19,6 @@ export const Page = () => {
                             alt="User Avatar"
                         />
                     </div>
-                    <form action="/buscar" method="get">
-                        <label htmlFor="busqueda" />
-                        <input
-                            type="text"
-                            id="busqueda"
-                            name="q"
-                            placeholder=""
-                        />
-                        <input type="submit" defaultValue="Buscar" />
-                    </form>
                     {menu ?
                         <div className="user-options" id="userOptions">
                             <Link to={"Usuarios"}>

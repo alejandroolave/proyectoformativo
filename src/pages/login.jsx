@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, Link } from "react-router-dom";
 import api from "../components/api";
-import { Navigate } from "react-router-dom";
 
 export const Login = () => {
     const [login,setLogin] =useState({})
@@ -13,7 +12,11 @@ export const Login = () => {
   
         try {
             const res =  await api.post("validar",data)
-            console.log("login: " ,res)
+            if(res.data.status == 200) {
+                location.href = 'dashboard';
+            } else {
+                // MENSAJE DE NO AUTORIZADO
+            }
             setLogin(res)
         } catch (error) {
             console.log("error login: " ,error)

@@ -4,11 +4,20 @@ import { useEffect } from "react";
 import MUIDataTable from "mui-datatables";
 import axios from 'axios'
 import api from "../components/api";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Row, Col, Label } from 'reactstrap';
 
 export const Usuarios = () => {
     const [modal, setModal] = useState(false);
     const [usuarios, setUsuarios] = useState([]);
 
+    const [nombres, setNombres] = useState(false);
+
+
+    const toggle = () => setModal(!modal);
+    
+
+
+    const handleNames = (e) => setNombres(e.target.value)
 
     useEffect(() => {
         listarUsuarios();
@@ -42,6 +51,21 @@ export const Usuarios = () => {
             });
     }
 
+    const guardarUsuario = () => {
+        api.post('usuario/registrar', {
+            nombres: nombres,
+
+        }).then(res => {
+            if(res.data.status == 200) {
+                // REGISTRO EXITOSO
+            } else {
+                // NO SE PUDO REGISTRAR
+            }
+        }).catch(err => {
+            console.error(err.response);
+        });
+    }
+
     return (
         <>
             <link rel="stylesheet" href="/public/css/usuarios.css" /><br />
@@ -60,11 +84,35 @@ export const Usuarios = () => {
 
                     options={options}
                 />
-                <Link to="/ruta-de-destino" className="nuevo-boton">
+                <Button onClick={toggle} className="nuevo-boton">
                     Registrar
-                </Link>
+                </Button>
 
             </div>
+
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>Registrar</ModalHeader>
+                <ModalBody>
+                <Row>
+                    <Col>
+                        <Label>Nombres</Label>
+                        <Input onChange={handleNames}/>
+                    </Col>
+                    <Col>
+                        <Label>Apellidos</Label>
+                        <Input/>
+                    </Col>
+                </Row>
+                </ModalBody>
+                <ModalFooter>
+                <Button color="primary" onClick={guardarUsuario}>
+                    Registrar
+                </Button>{' '}
+                <Button color="secondary" onClick={toggle}>
+                    Cancelar
+                </Button>
+                </ModalFooter>
+            </Modal>
         </>
     )
 }

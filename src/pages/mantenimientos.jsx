@@ -88,7 +88,7 @@ export const Mantenimientos = () => {
                 </Input>
             </Col>
             <Col md={6}>
-                <Label>ID de Máquin</Label>
+                <Label>ID de Máquina</Label>
                 <Input />
             </Col>
         </Row>

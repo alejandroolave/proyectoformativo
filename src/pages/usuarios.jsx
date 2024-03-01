@@ -54,17 +54,20 @@ export const Usuarios = () => {
     const guardarUsuario = () => {
         api.post('usuario/registrar', {
             nombres: nombres,
-
+            apellidos: apellidos
         }).then(res => {
             if(res.data.status == 200) {
                 // REGISTRO EXITOSO
+                console.log('Registro exitoso');
             } else {
                 // NO SE PUDO REGISTRAR
+                console.log('No se pudo registrar');
             }
         }).catch(err => {
             console.error(err.response);
         });
     }
+    
 
     return (
         <>
@@ -83,6 +86,7 @@ export const Usuarios = () => {
                     columns={columns}
 
                     options={options}
+                    
                 />
                 <Button onClick={toggle} className="nuevo-boton">
                     Registrar

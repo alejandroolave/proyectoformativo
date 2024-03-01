@@ -13,11 +13,12 @@ export const Login = () => {
         try {
             const res =  await api.post("validar",data)
             if(res.data.status == 200) {
+                console.log("exitoso",res)
                 location.href = 'dashboard';
             } else {
-                // MENSAJE DE NO AUTORIZADO
+                console.log("error",res)
             }
-            setLogin(res)
+            setLogin(res.data)
         } catch (error) {
             console.log("error login: " ,error)
             
@@ -69,6 +70,9 @@ export const Login = () => {
                                     name="contraseña"
                                 />
                             </div>
+                            <span>
+                                {login.message}
+                            </span>
                             <div className="btn">
                                 
                                     <button className="button1" type="submit">

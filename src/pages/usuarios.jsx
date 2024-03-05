@@ -7,12 +7,12 @@ export const Usuarios = () => {
     const [modal, setModal] = useState(false);
     const [usuarios, setUsuarios] = useState([]);
     const [nombres, setNombres] = useState("");
-    const [apellidos, setApellidos] = useState(""); // Agregado
+    const [apellidos, setApellidos] = useState(""); 
 
     const toggle = () => setModal(!modal);
 
     const handleNames = (e) => setNombres(e.target.value);
-    const handleApellidos = (e) => setApellidos(e.target.value); // Agregado
+    const handleApellidos = (e) => setApellidos(e.target.value); 
 
     useEffect(() => {
         listarUsuarios();
@@ -47,10 +47,10 @@ export const Usuarios = () => {
     const guardarUsuario = () => {
         api.post('usuario/registrar', {
             nombres: nombres,
-            apellidos: apellidos // Agregado
+            apellidos: apellidos 
         }).then(res => {
             if (res.data.status === 200) {
-                // REGISTRO EXITOSO
+               
                 console.log('Registro exitoso');
             } else {
                 // NO SE PUDO REGISTRAR

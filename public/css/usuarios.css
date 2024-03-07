@@ -1,18 +1,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0; /* Remove default margin */
+    margin: 0; 
   }
   
   input {
-    width: 100%; /* Make the input full width */
-    box-sizing: border-box; /* Include padding and border in the total width */
+    width: 100%; 
+    box-sizing: border-box; 
     padding: 12px;
     font-size: 16px;
     font-family: 'Arial', sans-serif;
     border: 1px solid #0066ff;
     border-radius: 5px;
-    margin-bottom: 10px; /* Add some space below the input */
+    margin-bottom: 10px; 
   }
   
   button {
@@ -36,15 +36,14 @@ body {
     background-color: #f2f2f2;
   }
   
-  /* Adjustments for smaller screens */
+
   @media only screen and (max-width: 600px) {
     input {
         margin-left: 0;
     }
   }
   
-  
-  /* boton 1*/
+
   
   .button {
     width: 50px;
@@ -102,7 +101,7 @@ body {
     transition-duration: .3s;
   }
   
-  /* boton 2*/
+
   .Btn {
     position: relative;
     display: flex;
@@ -167,11 +166,24 @@ body {
   .nuevo-boton {
     font-size: 1.5em;
     transition: background-color 0.3s;
-    /* transform: translate(850px,20px); */
   }
   
  
+.nuevo{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: #3498db;
 
+}
+.padre{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
 
 

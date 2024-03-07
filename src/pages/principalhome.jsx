@@ -10,23 +10,23 @@ export const Principalhome = () => {
             <link rel="stylesheet" href="/public/css/principalhome.css" />
             <div className="principal">
                 <div className="cuadro1">
-                    <h1>usuarios    : 0</h1>
+                    <h1>Usuarios    : 0</h1>
                 </div>
 
                 <div className="cuadro2">
-                    <h1>maquinas     : 0</h1>
+                    <h1>Maquinas     : 0</h1>
                 </div>
 
                 <div className="cuadro4">
-                    <h1>mantenimientos  : 0</h1>
+                    <h1>Mantenimientos  : 0</h1>
                 </div>
 
                 <div className="cuadro5">
-                    <h1>hambiente  : 0</h1>
+                    <h1>Ambiente  : 0</h1>
                 </div>
 
                 <div className="cuadro6">
-                    <h1>area  : 0</h1>
+                    <h1>Area  : 0</h1>
                 </div>
             </div>
 

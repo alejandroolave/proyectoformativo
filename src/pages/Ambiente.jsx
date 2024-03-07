@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { Link } from "react-router-dom";
 import MUIDataTable from "mui-datatables";
 import api from "../components/api";
+import Swal from 'sweetalert2'
 
 export const Ambiente = () => {
     const [modal, setModal] = useState(false);
     const [Ambiente, setAmbiente] = useState([]);
+    const [errors, setErrors] = useState([]);
+    const [nombre, setNombre] = useState("");
+
+    const handleNames = (e) => setNombre(e.target.value);
 
     useEffect(() => {
         listarAmbiente();
@@ -19,11 +24,11 @@ export const Ambiente = () => {
     };
 
     const toggle = () => {
-        setModal(!modal);
+        setErrors([])
+        setModal(!modal)
     };
-
     const listarAmbiente = () => {
-        api.get('Ambiente/listar')
+        api.get('ambiente/listar')
             .then(res => {
                 setAmbiente(res.data);
             })
@@ -32,8 +37,33 @@ export const Ambiente = () => {
             });
     };
 
+    const registrarAmbiente = () => {
+
+        api.post('ambiente/registrar', { nombre: nombre })
+            .then(res => {
+                if (res.data.errors) {
+                    setErrors(res.data.errors);
+                } else {
+
+                    Swal.fire({
+                        title: "Correcto!",
+                        text: "Se registró el ambiente correctamente!",
+                        icon: "success"
+                    });
+
+                    listarAmbiente();
+                    setModal(false)
+                    setErrors([])
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    }
+
     return (
         <>
+            <link rel="stylesheet" href="/public/css/global.css" /><br />
             <link rel="stylesheet" href="/public/css/maquinas.css" /><br />
             <div>
                 <MUIDataTable
@@ -52,24 +82,21 @@ export const Ambiente = () => {
                 <ModalBody>
                     <form>
                         <div className="form-group">
-                            <label htmlFor="idAmbiente">ID Ambiente:</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="idAmbiente"
-                            />
-                        </div>
-                        <div className="form-group">
                             <label htmlFor="nombreAmbiente">Nombre:</label>
                             <input
                                 type="text"
                                 className="form-control"
+                                id="nombreAmbiente"
+                                onChange={handleNames}
                             />
+                            {errors.find(error => error.path === 'nombre') &&
+                                <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'nombre').msg}</div>
+                            }
                         </div>
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={toggle}>Guardar</Button>{' '}
+                    <Button color="primary" onClick={registrarAmbiente}>Guardar</Button>{' '}
                     <Button color="secondary" onClick={toggle}>Cancelar</Button>
                 </ModalFooter>
             </Modal>

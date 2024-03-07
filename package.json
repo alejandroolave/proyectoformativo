@@ -23,8 +23,10 @@
     "react-data-table-component": "^7.6.2",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
+    "react-select": "^5.8.0",
     "reactstrap": "^9.2.2",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "sweetalert2": "^11.10.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

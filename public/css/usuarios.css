@@ -250,7 +250,13 @@ body {
     }
   }
   
-
+.error-validacion{
+  height: 20px;
+  position: relative;
+  top: -3px;
+  font-size: 0.65em;
+  color: red;
+}
 
 
   

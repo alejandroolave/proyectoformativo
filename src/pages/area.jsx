@@ -17,7 +17,26 @@ export const Area = () => {
         listarArea();
     }, []);
 
-    const columns = ["id_area", "nombre"];
+    const columns = [
+        "id_area",
+        "nombre",
+        {
+          name: "acciones",
+          label: "Acciones",
+          options: {
+            customBodyRender: (value, tableMeta, updateValue) => (
+              <div>
+                <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
+                  Actualizar
+                </Button>
+                <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
+                  Eliminar
+                </Button>
+              </div>
+            ),
+          },
+        },
+      ];
 
     const options = {
         filterType: 'checkbox',

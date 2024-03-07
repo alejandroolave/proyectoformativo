@@ -98,8 +98,24 @@ export const Maquinas = () => {
         "estado_maquina",
         "nombre_usuario",
         "nombre_area",
-        "nombre_ambiente"
-    ];
+        "nombre_ambiente",
+        {
+          name: "acciones",
+          label: "Acciones",
+          options: {
+            customBodyRender: (value, tableMeta, updateValue) => (
+              <div>
+                <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
+                  Actualizar
+                </Button>
+                <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
+                  Eliminar
+                </Button>
+              </div>
+            ),
+          },
+        },
+      ];
 
     const options = {
         filterType: 'checkbox',

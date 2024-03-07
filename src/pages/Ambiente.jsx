@@ -17,7 +17,27 @@ export const Ambiente = () => {
         listarAmbiente();
     }, []);
 
-    const columns = ["id_ambiente", "nombre"];
+    const columns = [
+        "id_ambiente",
+        "nombre",
+        {
+          name: "acciones",
+          label: "Acciones",
+          options: {
+            customBodyRender: (value, tableMeta, updateValue) => (
+              <div>
+                <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
+                  Actualizar
+                </Button>
+                <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
+                  Eliminar
+                </Button>
+              </div>
+            ),
+          },
+        },
+      ];
+      
 
     const options = {
         filterType: 'checkbox',

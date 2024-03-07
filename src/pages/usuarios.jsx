@@ -166,7 +166,7 @@ export const Usuarios = () => {
                         Registrar
                     </Button>{' '}
                     <Button color="secondary" onClick={toggle}>
-                        Cancelar
+                        Cancelarrrrr
                     </Button>
                 </ModalFooter>
             </Modal>

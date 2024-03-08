@@ -100,22 +100,23 @@ export const Maquinas = () => {
         "nombre_area",
         "nombre_ambiente",
         {
-          name: "acciones",
-          label: "Acciones",
-          options: {
-            customBodyRender: (value, tableMeta, updateValue) => (
-              <div>
-                <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
-                  Actualizar
-                </Button>
-                <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
-                  Eliminar
-                </Button>
-              </div>
-            ),
-          },
+            name: "acciones",
+            label: "Acciones",
+            options: {
+                customBodyRender: (value, tableMeta, updateValue) => (
+                    <div>
+                        <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
+                            Actualizar
+                        </Button>
+
+                        <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
+                            Eliminar
+                        </Button>
+                    </div>
+                ),
+            },
         },
-      ];
+    ];
 
     const options = {
         filterType: 'checkbox',
@@ -246,9 +247,11 @@ export const Maquinas = () => {
                     options={options}
                 />
             </div>
-            <Button onClick={toggle} className="nuevo-boton">
-                Registrar
-            </Button>
+            <div className="padre">
+                <Button onClick={toggle} className="nuevo-boton">
+                    Registrar
+                </Button>
+            </div>
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Registrar Maquina</ModalHeader>

@@ -21,22 +21,22 @@ export const Area = () => {
         "id_area",
         "nombre",
         {
-          name: "acciones",
-          label: "Acciones",
-          options: {
-            customBodyRender: (value, tableMeta, updateValue) => (
-              <div>
-                <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
-                  Actualizar
-                </Button>
-                <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
-                  Eliminar
-                </Button>
-              </div>
-            ),
-          },
+            name: "acciones",
+            label: "Acciones",
+            options: {
+                customBodyRender: (value, tableMeta, updateValue) => (
+                    <div>
+                        <Button color="primary" onClick={() => handleActualizar(tableMeta.rowIndex)}>
+                            Actualizar
+                        </Button>
+                        <Button color="danger" onClick={() => handleEliminar(tableMeta.rowIndex)}>
+                            Eliminar
+                        </Button>
+                    </div>
+                ),
+            },
         },
-      ];
+    ];
 
     const options = {
         filterType: 'checkbox',
@@ -85,6 +85,7 @@ export const Area = () => {
         <>
             <link rel="stylesheet" href="/public/css/global.css" /><br />
             <link rel="stylesheet" href="/public/css/maquinas.css" /><br />
+            <link rel="stylesheet" href="/public/css/area.css" /><br />
             <div>
                 <MUIDataTable
                     title={"Área"}
@@ -93,9 +94,12 @@ export const Area = () => {
                     options={options}
                 />
             </div>
-            <Button onClick={toggle} className="nuevo-boton">
-                Registrar
-            </Button>
+            <div className="padre">
+                <Button onClick={toggle} className="nuevo-boton">
+                    Registrar
+                </Button>
+            </div>
+
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Registrar Área</ModalHeader>

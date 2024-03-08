@@ -246,15 +246,6 @@ export const Usuarios = () => {
               }
             </Col>
           </Row>
-          <Row>
-            <Col md={6}>
-              <Label>Contraseña</Label>
-              <Input type="password" onChange={handleContrasena} />
-              {errors.find(error => error.path === 'contrasena') &&
-                <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'contrasena').msg}</div>
-              }
-            </Col>
-          </Row>
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={guardarUsuario}>
@@ -330,9 +321,9 @@ export const Usuarios = () => {
               <Row>
                 <Col md={6}>
                   <Label>Contraseña</Label>
-                  <Input defaultValue={usuariosBuscar["contrasena"] || ""} type="password" onChange={handleContrasena} />
-                  {errors.find(error => error.path === 'contrasena') &&
-                    <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'contrasena').msg}</div>
+                  <Input defaultValue={usuariosBuscar["Contraseña"] || ""} type="password" onChange={handleContrasena} />
+                  {errors.find(error => error.path === 'Contraseña') &&
+                    <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'Contraseña').msg}</div>
                   }
                 </Col>
               </Row>

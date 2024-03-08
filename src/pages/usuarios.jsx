@@ -9,13 +9,14 @@ export const Usuarios = () => {
   const [modalActualizarUsuario, setModalActualizarUsuario] = useState(false);
   const [modalEliminarUsuario, setModalEliminarUsuario] = useState(false);
   const [usuarios, setUsuarios] = useState([]);
-  const [usuariosBuscar, setUsuarioBuscar] = useState([]);
+  const [usuariosBuscar, setUsuarioBuscar] = useState({});
   const [nombres, setNombres] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [identificacion, setIdentificacion] = useState("");
   const [telefono, setTelefono] = useState("");
   const [correo, setCorreo] = useState("");
   const [rol, setRol] = useState("");
+  const [contrasena, setContrasena] = useState("");
   const [activo, setActivo] = useState(true); // Estado por defecto es activo
   const [errors, setErrors] = useState([]);
   const [keyModal, setKeyModal] = useState(0);
@@ -32,6 +33,7 @@ export const Usuarios = () => {
   const handleTelefono = (e) => setTelefono(e.target.value);
   const handleCorreo = (e) => setCorreo(e.target.value);
   const handleRol = (e) => setRol(e.target.value);
+  const handleContrasena = (e) => setContrasena(e.target.value);
   const handleActivo = () => setActivo(!activo); // Cambiar el estado de activo/inactivo
 
   useEffect(() => {
@@ -53,9 +55,7 @@ export const Usuarios = () => {
       label: "Acciones",
       options: {
         customBodyRender: (identificacion, tableMeta, updateValue, id_usuario) => (
-
           <div>
-
             <Button color="primary" onClick={() => { setKeyModal(keyModal + 1); buscarUsuario(tableMeta.rowData[1]) }}>
               Actualizar
             </Button>
@@ -73,9 +73,6 @@ export const Usuarios = () => {
   };
 
   const handleActualizar = (id) => {
-
-    console.log(nombres, apellidos, identificacion);
-    // Lógica para actualizar el usuario en la base de datos
     api.put(`usuario/actualizar/${id}`, {
       nombres: nombres,
       apellidos: apellidos,
@@ -83,13 +80,12 @@ export const Usuarios = () => {
       telefono: telefono,
       correo: correo,
       rol: rol,
-      estado: activo,
+      contrasena: contrasena,
+      estado: activo ? "activo" : "inactivo",
     }).then(res => {
       if (res.data.errors) {
-        console.log('ERRRORS: ', res.data.errors);
         setErrors(res.data.errors);
       } else {
-        console.log('Usuario actualizado:', res.data);
         Swal.fire({
           title: "Correcto!",
           text: "Se actualizó el usuario correctamente!",
@@ -99,22 +95,14 @@ export const Usuarios = () => {
         setModalActualizarUsuario(false);
         setErrors([]);
       }
-
     }).catch(err => {
       console.error(err.response);
     });
   };
 
-
-
-
   const handleEliminar = () => {
-    console.log(idEliminar, "hahha")
-
-    // Lógica para eliminar el usuario de la base de datos
     api.delete(`usuario/eliminar/${idEliminar}`)
       .then(res => {
-        console.log('Usuario eliminado:', res.data);
         Swal.fire({
           title: "Correcto!",
           text: "Se eliminó el usuario correctamente!",
@@ -137,24 +125,21 @@ export const Usuarios = () => {
         console.error(err);
       });
   };
-  const buscarUsuario = (id_usuario) => {
 
+  const buscarUsuario = (id_usuario) => {
     api.get('usuario/buscar/' + id_usuario)
       .then(res => {
-        const data = res.data
-        console.log(data)
-        setNombres(data["nombres"] ? data["nombres"] : "");
-        setApellidos(data["apellidos"] ? data["apellidos"] : "");
-        setIdentificacion(data["identificacion"] ? data["identificacion"] : "");
-        setTelefono(data["telefono"] ? data["telefono"] : "");
-        setCorreo(data["correo"] ? data["correo"] : "");
-        setRol(data["rol"] ? data["rol"] : "");
-        setActivo(data["estado"] ? data["estado"] : "");
-
-
+        const data = res.data;
+        setNombres(data["nombres"] || "");
+        setApellidos(data["apellidos"] || "");
+        setIdentificacion(data["identificacion"] || "");
+        setTelefono(data["telefono"] || "");
+        setCorreo(data["correo"] || "");
+        setRol(data["rol"] || "");
+        setContrasena(data["contrasena"] || "");
+        setActivo(data["estado"] === "activo");
         setUsuarioBuscar(res.data);
-        setModalActualizarUsuario(true)
-        console.log(res)
+        setModalActualizarUsuario(true);
       })
       .catch(err => {
         console.error(err);
@@ -169,10 +154,9 @@ export const Usuarios = () => {
       telefono: telefono,
       correo: correo,
       rol: rol,
+      contrasena: contrasena,
     }).then(res => {
-      console.log('DATA: ', res.data);
       if (res.data.errors) {
-        console.log('ERRRORS: ', res.data.errors);
         setErrors(res.data.errors);
       } else {
         Swal.fire({
@@ -180,7 +164,6 @@ export const Usuarios = () => {
           text: "Se registró el usuario correctamente!",
           icon: "success"
         });
-
         listarUsuarios();
         setModal(false);
         setErrors([]);
@@ -254,13 +237,21 @@ export const Usuarios = () => {
             <Col md={6}>
               <Label>Rol</Label>
               <Input type="select" onChange={handleRol}>
-                {/* <option value="administrador">Administrador</option> */}
                 <option value="">Seleccione una opcion...</option>
                 <option value="usuario">Usuario</option>
                 <option value="tecnico">Técnico</option>
               </Input>
               {errors.find(error => error.path === 'rol') &&
                 <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'rol').msg}</div>
+              }
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6}>
+              <Label>Contraseña</Label>
+              <Input type="password" onChange={handleContrasena} />
+              {errors.find(error => error.path === 'contrasena') &&
+                <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'contrasena').msg}</div>
               }
             </Col>
           </Row>
@@ -285,14 +276,14 @@ export const Usuarios = () => {
               <Row>
                 <Col md={6}>
                   <Label>Identificación</Label>
-                  <Input defaultValue={usuariosBuscar["identificacion"] ? usuariosBuscar["identificacion"] : ""} onChange={handleIdentificacion} />
+                  <Input defaultValue={usuariosBuscar["identificacion"] || ""} onChange={handleIdentificacion} />
                   {errors.find(error => error.path === 'identificacion') &&
                     <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'identificacion').msg}</div>
                   }
                 </Col>
                 <Col md={6}>
                   <Label>Nombres</Label>
-                  <Input defaultValue={usuariosBuscar["nombres"] ? usuariosBuscar["nombres"] : ""} onChange={handleNames} />
+                  <Input defaultValue={usuariosBuscar["nombres"] || ""} onChange={handleNames} />
                   {errors.find(error => error.path === 'nombres') &&
                     <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'nombres').msg}</div>
                   }
@@ -301,14 +292,14 @@ export const Usuarios = () => {
               <Row>
                 <Col md={6}>
                   <Label>Apellidos</Label>
-                  <Input defaultValue={usuariosBuscar["apellidos"] ? usuariosBuscar["apellidos"] : ""} onChange={handleApellidos} />
+                  <Input defaultValue={usuariosBuscar["apellidos"] || ""} onChange={handleApellidos} />
                   {errors.find(error => error.path === 'apellidos') &&
                     <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'apellidos').msg}</div>
                   }
                 </Col>
                 <Col md={6}>
                   <Label>Teléfono</Label>
-                  <Input defaultValue={usuariosBuscar["telefono"] ? usuariosBuscar["telefono"] : ""} onChange={handleTelefono} />
+                  <Input defaultValue={usuariosBuscar["telefono"] || ""} onChange={handleTelefono} />
                   {errors.find(error => error.path === 'telefono') &&
                     <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'telefono').msg}</div>
                   }
@@ -317,7 +308,7 @@ export const Usuarios = () => {
               <Row>
                 <Col md={6}>
                   <Label>Correo</Label>
-                  <Input defaultValue={usuariosBuscar["correo"] ? usuariosBuscar["correo"] : ""} onChange={handleCorreo} />
+                  <Input defaultValue={usuariosBuscar["correo"] || ""} onChange={handleCorreo} />
                   {errors.find(error => error.path === 'correo') &&
                     <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'correo').msg}</div>
                   }
@@ -325,9 +316,7 @@ export const Usuarios = () => {
                 </Col>
                 <Col md={6}>
                   <Label>Rol</Label>
-
-                  <Input defaultValue={usuariosBuscar["rol"] ? usuariosBuscar["rol"] : ""} type="select" onChange={handleRol}>
-                    {/* <option value="administrador">Administrador</option> */}
+                  <Input defaultValue={usuariosBuscar["rol"] || ""} type="select" onChange={handleRol}>
                     <option value="">Seleccione una opcion...</option>
                     <option value="administrador">Administrador</option>
                     <option value="usuario">Usuario</option>
@@ -339,10 +328,19 @@ export const Usuarios = () => {
                 </Col>
               </Row>
               <Row>
+                <Col md={6}>
+                  <Label>Contraseña</Label>
+                  <Input defaultValue={usuariosBuscar["contrasena"] || ""} type="password" onChange={handleContrasena} />
+                  {errors.find(error => error.path === 'contrasena') &&
+                    <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'contrasena').msg}</div>
+                  }
+                </Col>
+              </Row>
+              <Row>
                 <Col md={12}>
-                  {console.log(usuariosBuscar["estado"])}
                   <Label>Estado</Label>
-                  <Input defaultValue={usuariosBuscar["estado"] ? usuariosBuscar["estado"] : ""} type="select" onChange={handleActivo}>
+                  <Input value={usuariosBuscar["estado"] || ""} type="select" onChange={handleActivo}>
+                    <option value="">Seleccione una opción...</option>
                     <option value="activo">Activo</option>
                     <option value="inactivo">Inactivo</option>
                   </Input>
@@ -350,7 +348,7 @@ export const Usuarios = () => {
               </Row>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={() => handleActualizar(usuariosBuscar["id_usuario"] ? usuariosBuscar["id_usuario"] : "")}>
+              <Button color="primary" onClick={() => handleActualizar(usuariosBuscar["id_usuario"] || "")}>
                 Guardar cambios
               </Button>{' '}
               <Button color="secondary" onClick={() => setModalActualizarUsuario(false)}>

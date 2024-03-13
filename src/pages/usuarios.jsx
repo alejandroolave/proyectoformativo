@@ -3,6 +3,8 @@ import MUIDataTable from "mui-datatables";
 import api from "../components/api";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input, Row, Col, Label } from 'reactstrap';
 import Swal from 'sweetalert2';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export const Usuarios = () => {
   const [modal, setModal] = useState(false);
@@ -36,9 +38,40 @@ export const Usuarios = () => {
   const handleContrasena = (e) => setContrasena(e.target.value);
   const handleActivo = () => setActivo(!activo); // Cambiar el estado de activo/inactivo
 
+  const handleExportPDF = () => {
+    const columns = ["ID", "Identificación", "Nombres", "Apellidos", "Teléfono", "Correo", "Estado", "Contraseña", "Rol"];
+    const data = usuarios.map(usuario => [
+        usuario.id_usuario,
+        usuario.identificacion,
+        usuario.nombres,
+        usuario.apellidos,
+        usuario.telefono,
+        usuario.correo,
+        usuario.estado,
+        usuario.contrasena,
+        usuario.rol,
+    ]);
+
+    const pdf = new jsPDF();
+    // Agregar bordes alrededor de la hoja
+    pdf.rect(5, 5, 200, 287); // Rectángulo exterior
+
+    // Agregar la imagen pequeña al lado del título
+    const smallImageUrl = 'https://www.shutterstock.com/image-vector/coffee-machine-logo-design-260nw-621385727.jpg'; // Ajusta la ruta absoluta o relativa según tu estructura de carpetas
+    pdf.addImage(smallImageUrl, 'JPEG', 8, 8, 35, 35); // Ajusta las coordenadas y el tamaño según tus necesidades
+
+    pdf.autoTable({
+        head: [columns],
+        body: data,
+        startY: 40, // Ajustar según el espacio necesario para el nombre en la cabecera
+    });
+
+    pdf.save("usuarios.pdf");
+};
   useEffect(() => {
     listarUsuarios();
   }, []);
+  
 
   const columns = [
     "id_usuario",
@@ -70,6 +103,17 @@ export const Usuarios = () => {
 
   const options = {
     filterType: 'checkbox',
+    downloadOptions: {
+      filename: 'usuarios.csv',
+      separator: ',',
+    },
+    customToolbar: () => {
+      return (
+        <Button onClick={handleExportPDF} color="primary">
+          Descargar PDF
+        </Button>
+      );
+    },
   };
 
   const handleActualizar = (id) => {
@@ -259,7 +303,6 @@ export const Usuarios = () => {
 
       {/* Modal para Actualizar */}
       {modalActualizarUsuario ?
-
         <div key={keyModal}>
           <Modal isOpen={true} toggle={() => { setModalActualizarUsuario(!modalActualizarUsuario) }}>
             <ModalHeader toggle={() => setModalActualizarUsuario(!modalActualizarUsuario)}>Actualizar</ModalHeader>
@@ -303,7 +346,6 @@ export const Usuarios = () => {
                   {errors.find(error => error.path === 'correo') &&
                     <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'correo').msg}</div>
                   }
-
                 </Col>
                 <Col md={6}>
                   <Label>Rol</Label>
@@ -321,16 +363,16 @@ export const Usuarios = () => {
               <Row>
                 <Col md={6}>
                   <Label>Contraseña</Label>
-                  <Input defaultValue={usuariosBuscar["Contraseña"] || ""} type="password" onChange={handleContrasena} />
-                  {errors.find(error => error.path === 'Contraseña') &&
-                    <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'Contraseña').msg}</div>
+                  <Input defaultValue={usuariosBuscar["contrasena"] || ""} type="password" onChange={handleContrasena} />
+                  {errors.find(error => error.path === 'contrasena') &&
+                    <div className="error-validacion" style={{ color: 'red' }}>{errors.find(error => error.path === 'contrasena').msg}</div>
                   }
                 </Col>
               </Row>
               <Row>
                 <Col md={12}>
                   <Label>Estado</Label>
-                  <Input value={usuariosBuscar["estado"] || ""} type="select" onChange={handleActivo}>
+                  <Input defaultValue={usuariosBuscar["estado"] || ""} type="select" onChange={handleActivo}>
                     <option value="">Seleccione una opción...</option>
                     <option value="activo">Activo</option>
                     <option value="inactivo">Inactivo</option>
@@ -349,7 +391,6 @@ export const Usuarios = () => {
           </Modal>
         </div>
         : ""}
-
 
       {/* Modal para Eliminar */}
       <Modal isOpen={modalEliminarUsuario} toggle={() => setModalEliminarUsuario(!modalEliminarUsuario)}>

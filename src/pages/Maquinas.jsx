@@ -7,6 +7,9 @@ import axios from "axios";
 import api from "../components/api";
 import Select from 'react-select';
 import Swal from 'sweetalert2'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
 
 
 export const Maquinas = () => {
@@ -118,8 +121,16 @@ export const Maquinas = () => {
         },
     ];
 
+
     const options = {
         filterType: 'checkbox',
+        customToolbar: () => {
+            return (
+                <Button onClick={handleExportPDF} color="primary">
+                    Descargar PDF
+                </Button>
+            );
+        },
     };
 
 
@@ -178,7 +189,38 @@ export const Maquinas = () => {
             });
     };
 
-
+    const handleExportPDF = () => {
+        const columnsPDF = ["Nombre", "Marca", "Placa", "Modelo", "Cantidad", "Usuario", "Área", "Ambiente"];
+        const dataPDF = Maquina.map(item => [
+            item.nombre_maquina,
+            item.marca,
+            item.placa,
+            item.modelo,
+            item.cantidad,
+            item.nombre_usuario,
+            item.nombre_area,
+            item.nombre_ambiente
+        ]);
+    
+        const pdf = new jsPDF();
+        
+        // Agregar bordes alrededor de la hoja
+        pdf.rect(5, 5, pdf.internal.pageSize.width - 10, pdf.internal.pageSize.height - 10); 
+    
+        // Agregar imagen en la parte superior izquierda
+        const imgData = 'https://www.shutterstock.com/image-vector/coffee-machine-logo-design-260nw-621385727.jpg'; // Reemplaza 'YourBase64ImageString' con la cadena base64 de tu imagen
+        pdf.addImage(imgData, 'JPEG', 15, 15, 30, 30); // Ajusta las coordenadas y dimensiones según tus necesidades
+        
+        // Generar la tabla
+        pdf.autoTable({
+            head: [columnsPDF],
+            body: dataPDF,
+            startY: 43, // Ajusta la posición de inicio de la tabla
+        });
+    
+        pdf.save("maquinas.pdf");
+    };
+    
 
     const registrar = () => {
 
